@@ -1,0 +1,23 @@
+Package: stranslate
+Type: Package
+Title: Simple Translation Between Different Languages
+Version: 0.1.0
+Authors@R: 
+  c(person("Sigbert", "Klinke", email="sigbert@hu-berlin.de", role=c("aut", "cre")))
+Maintainer: Sigbert Klinke <sigbert@hu-berlin.de>
+Description: Message translation is often managed with po files and the programme "gettext", but sometimes a lightweight solution is needed.
+    In contrast to po files, a more flexible approach is used as in Project Fluent (https://projectfluent.org/). 
+    A key-value approach allows easier handling of translated messages.
+URL: https://github.com/sigbertklinke/stranslate (development version)
+VignetteBuilder: knitr
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+Roxygen: list(markdown = TRUE)
+Suggests:
+    rmarkdown
+Imports:
+    crayon,
+    knitr,
+    stringr
