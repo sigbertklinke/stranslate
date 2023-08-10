@@ -34,7 +34,7 @@ getMsg <- function (..., .domain=getOption("stranslate.domain"), .lang=getOption
   if (is.null(nargs)) nargs <- rep('', length(arg_list))
   nnargs   <- nchar(nargs)
   for (i in seq_along(arg_list)) {
-    err <- try(arg_list[[i]] <- eval(arg_list[[i]], envir=parent.frame()))
+    err <- try(arg_list[[i]] <- eval(arg_list[[i]], envir=parent.frame()), silent=TRUE)
     if (inherits(err, 'try-error')) arg_list[[i]] <- as.character(arg_list[[i]])
     if (nnargs[i]==0) {
       nargs[i] <- as.character(arg_list[[i]])

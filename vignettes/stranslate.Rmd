@@ -70,6 +70,14 @@ getMsg(ROUND=1, .lang="de")
 
 Instead of `ROUND` you could use `'ROUND'`, especially if you write a package. Since English is the fallback language, an English translation must be there.
 
+And a multi-line example:
+
+```{r}
+loadMsg(system.file("messages", "Rdewiki.txt", package="stranslate")) # load the translation(s)
+getMsg(Rdewiki)
+getMsg("Rdewiki", .lang="en")
+```
+
 ## A more complex example
 
 As you could see a key can have a parameter, also additional parameters are allowed. The current example is taken from [Project fluent](https://projectfluent.org/).
@@ -140,7 +148,12 @@ ROUND  Runden Sie ihr Ergebnis auf `r ROUND` Nachkommastellen
 # otherwise use the default message
 ```
 
-ATTENTION: All comparison are __character__ comparisons. In doubt, make sure that you convert your parameters yourself, e.g. `getMsg(ROUND=as.character(3))`. 
+ATTENTION: All comparison are __character__ comparisons. If in doubt, make sure you convert your parameters yourself, e.g. `getMsg(ROUND=as.character(3))`. 
+
+As you can seem we use the Rmarkdown inline notation for R and internally is `knitr::knit` is used. This allows calculations with the parameters.
+
+ATTENTION: Neither R code chunks nor other engines than R are supported.
+
 
 Other parameters given to `getMsg`, e.g. `getMsg(ROUND=3, user='Anne')` can be used in a message, e.g.
 
@@ -187,6 +200,13 @@ getMsg(ROUND=3, .domain="R")
 
 ```{r, echo=FALSE, comment=''}
 file <- system.file("messages", "messages.txt", package="stranslate")
+cat(readLines(file), sep="\n")
+```
+
+## `Rdewiki.txt`
+
+```{r, echo=FALSE, comment=''}
+file <- system.file("messages", "Rdewiki.txt", package="stranslate")
 cat(readLines(file), sep="\n")
 ```
 

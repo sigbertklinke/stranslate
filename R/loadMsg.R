@@ -15,6 +15,7 @@
 loadMsg <- function(files, .domain=getOption("stranslate.domain"), .lang='en', .silent=TRUE) {
   if (!isName(.domain)) stop(sprintf("Only letters, digits, dot and underscores allowed in domain '%s'.", .domain))
   if (is.null(msg[[.domain]])) msg[[.domain]] <- list()
+  # browser()
   key <- ' '
   msg$.domain <- .domain
   for (file in files) {
@@ -48,12 +49,13 @@ loadMsg <- function(files, .domain=getOption("stranslate.domain"), .lang='en', .
         msgi[[query]] <- trimws(substring(lines[i], 1+nchar(key)))
         j      <- i+1
         while (j<=length(lines)) {
-          if (tok1[j]=="") msgi[query] <- paste0(msgi[query], "\n", trimws(substr(lines[j])))
-          if (startsWith(tok1[j], '?')) {
+          cont <- FALSE
+          if (tok1[j]=="") {
+            msgi[[query]] <- paste0(msgi[[query]], "\n", trimws(lines[j]))
+          } else if (startsWith(tok1[j], '?')) {
             query <- trimws(substring(tok1[j], 2))
             msgi[[query]] <- trimws(substring(lines[j], 2+nchar(query)))
-          }
-          if (!(substr(lines[j], 1, 1) %in% c("", "?"))) break
+          } else break
           j <- j+1
         }
         #browser()
