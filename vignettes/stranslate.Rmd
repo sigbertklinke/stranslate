@@ -74,8 +74,8 @@ And a multi-line example:
 
 ```{r}
 loadMsg(system.file("messages", "Rdewiki.txt", package="stranslate")) # load the translation(s)
-getMsg(Rdewiki)
 getMsg("Rdewiki", .lang="en")
+getMsg(Rdewiki, .lang="de")
 ```
 
 ## A more complex example
