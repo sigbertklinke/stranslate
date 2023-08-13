@@ -1,7 +1,7 @@
 Package: stranslate
 Type: Package
 Title: Simple Translation Between Different Languages
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
   c(person("Sigbert", "Klinke", email="sigbert@hu-berlin.de", role=c("aut", "cre")))
 Maintainer: Sigbert Klinke <sigbert@hu-berlin.de>
